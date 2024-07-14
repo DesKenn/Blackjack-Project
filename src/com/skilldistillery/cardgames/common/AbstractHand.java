@@ -16,11 +16,11 @@ public abstract class AbstractHand {
 	//TODO add  method addCard(Card card)
 	
 	public void addCard(Card card) {
-		
+		cardsInHand.add(card);
 	}
 	
 	public void clearHand(){
-		
+		cardsInHand.removeAll(cardsInHand);
 	}
 	
 }
