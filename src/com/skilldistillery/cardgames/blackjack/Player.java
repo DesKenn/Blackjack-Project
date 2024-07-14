@@ -29,10 +29,7 @@ public class Player {
 		
 	}
 	public void displayHand() {
-		List<Player> hand = new ArrayList<>();
 
-		for (int i = 0; i < hand.size(); i++) {
-			System.out.println(hand.get(i)); 
+		hand.displayHand();
 		}
-	}		
 }

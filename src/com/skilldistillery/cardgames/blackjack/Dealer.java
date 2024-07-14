@@ -35,20 +35,15 @@ public class Dealer extends Player {
 	@Override
 	public int getHandValue() {
 		return super.getHandValue();
-				}
+	}
 
 	@Override
 	public void displayHand() {
-		super.displayHand();
-		List<Player> hand = new ArrayList<>();
-
+		  super.displayHand();
+		System.out.println();
 		
-		for (int i = 0; i < hand.size(); i++) {
-		System.out.println(hand.get(i));	
-		}
+	}
 
-	}	
-	
 	public Object shuffle() {
 		return deck.shuffleCards();
 	}

@@ -20,22 +20,37 @@ public class BlackJackApp {
 	}
 
 	public void run() {
-		System.out.println(" Welcome to the game BlackJack!");
+		System.out.println("Welcome to the game BlackJack!");
+		System.out.println();
 
 		dealer.shuffle();
 
-//		
+//		first player card
 		player.addCardToHand(dealer.dealCard());
+		System.out.println("Your first card is... ");
 		player.displayHand();
+		System.out.println();
+		
+		//first dealer card
+		System.out.println("The dealer's first card is hidden.");
 		dealer.addCardToHand(dealer.dealCard());
-		dealer.displayHand();
-		player.addCardToHand(dealer.dealCard());
-		player.displayHand();
-		dealer.addCardToHand(dealer.dealCard());
-		dealer.displayHand();
+		System.out.println();
 
+		//second player card
+		player.addCardToHand(dealer.dealCard());
+		System.out.println("Your second card is... ");
+		player.displayHand();
+		System.out.println();
+
+		System.out.println("The dealer's cards are...");
+		dealer.addCardToHand(dealer.dealCard());
+		dealer.displayHand();
+		System.out.println();
+
+		
 		System.out.println("Your hand is " + player.getHandValue());
 		System.out.println("Dealer's hand is  " + dealer.getHandValue());
+		System.out.println();
 		
 		if (player.getHandValue() == 21) {
 			System.out.println("YOU HIT BLACKJACK!");
@@ -45,6 +60,9 @@ public class BlackJackApp {
 			System.out.println("DEALER HIT BLACKJACK!");
 			System.out.println("Dealer's hand is  " + dealer.getHandValue());
 		}	else
+			
+			
+			
 			hitOrStand();
 		dealerHitOrStand();
 		
@@ -57,9 +75,10 @@ public class BlackJackApp {
 	public void dealerHitOrStand() {
 		if (dealer.getHandValue() > 17) {
 			System.out.println("Dealer decides not to hit.");
-			checkWin();
-		} 		
-{
+		} 					
+		checkWin();
+
+
 
 			while (dealer.getHandValue() < 17 && dealer.getHandValue() < player.getHandValue()) {
 				System.out.println("Dealer draws a card . . .");
@@ -68,8 +87,9 @@ public class BlackJackApp {
 				checkWin();
 
 			}
+
 		}
-		}
+		
 
 	public boolean hitOrStand() {
 		System.out.println("1. Hit");
