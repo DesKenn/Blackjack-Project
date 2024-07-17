@@ -35,4 +35,13 @@ public class BlackJackHand extends AbstractHand {
 	public void hitOrStand() {
 		
 	}
+	
+	public void displayHand(boolean showHoleCard) {
+		if (showHoleCard) {
+			super.displayHand();
+		}
+		else {
+			System.out.println(cardsInHand.get(0));
+		}
+	}
 }

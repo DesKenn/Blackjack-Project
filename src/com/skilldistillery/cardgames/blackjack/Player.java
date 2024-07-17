@@ -9,7 +9,8 @@ import com.skilldistillery.cardgames.common.Deck;
 public class Player {
 //	Player has-a hand
 //	dont add a get hand method
-	private BlackJackHand hand;
+//	private BlackJackHand hand;
+	protected BlackJackHand hand;
 	
 
 	
@@ -31,5 +32,5 @@ public class Player {
 	public void displayHand() {
 
 		hand.displayHand();
-		}
+	}
 }

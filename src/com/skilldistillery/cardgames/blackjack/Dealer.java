@@ -11,7 +11,7 @@ public class Dealer extends Player {
 	// already has a hand because dealer extends player
 //	do not add a getDeck method
 
-	List<Player> hand = new ArrayList<>();
+//	List<Player> hand = new ArrayList<>();
 	private Deck deck;
 
 	public Dealer() {
@@ -44,6 +44,18 @@ public class Dealer extends Player {
 		
 	}
 
+	public void displayHand(boolean showHoleCard) {
+//		if (showHoleCard) {
+//			super.displayHand();
+//		}
+//		else {
+//			hand.displayHand(false);
+//		}
+		hand.displayHand(showHoleCard);
+		System.out.println();
+		
+	}
+	
 	public Object shuffle() {
 		return deck.shuffleCards();
 	}

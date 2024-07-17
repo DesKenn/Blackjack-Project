@@ -30,13 +30,13 @@ public class BlackJackApp {
 		System.out.println("Your first card is... ");
 		player.displayHand();
 		System.out.println();
-		
-		//first dealer card
+
+		// first dealer card
 		System.out.println("The dealer's first card is hidden.");
 		dealer.addCardToHand(dealer.dealCard());
 		System.out.println();
 
-		//second player card
+		// second player card
 		player.addCardToHand(dealer.dealCard());
 		System.out.println("Your second card is... ");
 		player.displayHand();
@@ -44,52 +44,49 @@ public class BlackJackApp {
 
 		System.out.println("The dealer's cards are...");
 		dealer.addCardToHand(dealer.dealCard());
-		dealer.displayHand();
+		dealer.displayHand(false);
 		System.out.println();
 
-		
 		System.out.println("Your hand is " + player.getHandValue());
-		System.out.println("Dealer's hand is  " + dealer.getHandValue());
+//		System.out.println("Dealer's hand is  " + dealer.getHandValue());
 		System.out.println();
-		
+
 		if (player.getHandValue() == 21) {
 			System.out.println("YOU HIT BLACKJACK!");
 			System.out.println("Your hand is " + player.getHandValue());
-			}
-		if  (dealer.getHandValue() == 21) {
+		}
+		if (dealer.getHandValue() == 21) {
 			System.out.println("DEALER HIT BLACKJACK!");
 			System.out.println("Dealer's hand is  " + dealer.getHandValue());
-		}	else
-			
-			
-			
+		} else {
+
 			hitOrStand();
-		dealerHitOrStand();
-		
-		
-		
-		
+//		dealerHitOrStand();
+		}
 
 	}
 
 	public void dealerHitOrStand() {
-		if (dealer.getHandValue() > 17) {
+		if (dealer.getHandValue() >= 17) {
 			System.out.println("Dealer decides not to hit.");
-		} 					
-		checkWin();
-
-
-
+			dealer.displayHand(true);
+		}
+//		checkWin();
+		else {
 			while (dealer.getHandValue() < 17 && dealer.getHandValue() < player.getHandValue()) {
 				System.out.println("Dealer draws a card . . .");
 				dealer.addCardToHand(dealer.dealCard());
+//			checkWin();
+
+				dealer.displayHand();
 				System.out.println("Dealer's hand is  " + dealer.getHandValue());
-				checkWin();
+//			checkWin();
 
 			}
-
 		}
-		
+		checkWin();
+
+	}
 
 	public boolean hitOrStand() {
 		System.out.println("1. Hit");
@@ -102,15 +99,19 @@ public class BlackJackApp {
 				choice = kb.nextInt();
 				if (choice == 1) {
 					player.addCardToHand(dealer.dealCard());
+					player.displayHand();
 					System.out.println("Your hand is " + player.getHandValue());
-					System.out.println("Dealer's hand is  " + dealer.getHandValue());
+//					System.out.println("Dealer's hand is  " + dealer.getHandValue());
 					userHits = true;
-					break;
+					checkWin();
+
+//					break;
 
 				} else if (choice == 2) {
 					userHits = false;
 					dealerHitOrStand();
-		
+					checkWin();
+
 					break;
 
 				} else if (choice == 3) {
@@ -123,34 +124,40 @@ public class BlackJackApp {
 			} catch (IllegalArgumentException e) {
 				System.err.println("Enter 1, 2, or 3.");
 			}
-		}		
+		}
 		return userHits;
 
 	}
 
 	public void checkWin() {
-		boolean userWin = false;
-		boolean dealerWin = false;
+//		boolean userWin = false;
+//		boolean dealerWin = false;
 		if (player.getHandValue() == 21) {
 			System.out.println("YOU HIT BLACKJACK!");
 			System.out.println("Your hand is " + player.getHandValue());
 
-			userWin = true;
+//			userWin = true;
 		}
 		if (dealer.getHandValue() == 21) {
 			System.out.println("DEALER HIT BLACKJACK!");
 			System.out.println("Dealer's hand is  " + dealer.getHandValue());
-			dealerWin = true;
+//			dealerWin = true;
 		}
 
 		if (player.getHandValue() > 21) {
-			System.out.println("You busted :( ");
-			dealerWin = true;
+			System.out.println("You busted :(, dealer wins ");
+//			dealerWin = true;
 
-			if (dealer.getHandValue() > 21) {
-				System.out.println("Dealer busted");
-				userWin = true;
-			}
+		} else if (dealer.getHandValue() > 21) {
+			System.out.println("Dealer busted, you win");
+//				userWin = true;
+		} else if (dealer.getHandValue() > player.getHandValue()) {
+			System.out.println("Dealer wins");
+		} else if (dealer.getHandValue() < player.getHandValue()) {
+			System.out.println("Player wins");
+		} else {
+			System.out.println("Tied");
 		}
+
 	}
 }
